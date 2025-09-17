@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="iac-com-terraform-e-aws">IAC com Terraform e AWS</h1>
+<p>Neste repositório, vamos aprender a usar o Terraform e a AWS para criar a nossa primeira infra na nuvem.</p>
+<p>Este documento também está disponível em <a href="README.pdf">formato PDF</a> e <a href="README.html">formato HTML</a> para que você possa visualizá-lo offline.</p>
+<h2 id="tabela-de-conte%C3%BAdos">Tabela de conteúdos</h2>
+<ul>
+<li><a href="#pr%C3%A9-requisitos">Pré-requisitos</a></li>
+<li><a href="#passo-a-passo">Passo a passo</a></li>
+<li><a href="#erros-conhecidos">Erros conhecidos</a></li>
+<li><a href="#saiba-mais">Saiba mais</a></li>
+</ul>
+<h2 id="pr%C3%A9-requisitos">Pré-requisitos</h2>
+<ul>
+<li>Instalação do Terraform
+<ul>
+<li>https://developer.hashicorp.com/terraform/downloads?product_intent=terraform</li>
+<li><strong>Usa Windows?</strong> acesse esse <a href="Como%20Instalar%20o%20Terraform%20no%20Windows.pdf">documento</a></li>
+</ul>
+</li>
+<li>Instalação do AWS CLI
+<ul>
+<li>https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</li>
+</ul>
+</li>
+<li>Criando usuário na AWS
+<ul>
+<li><a href="Cria%C3%A7%C3%A3o%20de%20usu%C3%A1rio%20na%20AWS%20e%20chave%20de%20acesso%20para%20vincular%20ao%20AWS%20CLI%20na%20sua%20maquina.pdf"><strong>Acesse esse documento</strong></a></li>
+</ul>
+</li>
+<li>Realizar login no AWS CLI
+<ul>
+<li><code>aws configure</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="passo-a-passo">Passo a passo</h2>
+<p>Vamos começar a diversão! 🥳</p>
+<ol>
+<li>
+<p>Comece fazendo o clone do repositório:</p>
+<blockquote>
+<p>[!TIP]
+Se você preferir usar o Github é só trocar a URL do repositório para <code>https://github.com/avanti-dvp/iac-com-terraform-e-aws.git</code></p>
+</blockquote>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://gitlab.com/avanti-dvp/iac-com-terraform<span class="hljs-_">-e</span>-aws.git
+<span class="hljs-built_in">cd</span> iac-com-terraform<span class="hljs-_">-e</span>-aws
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+Se você não tem o Git instalado ou não sabe usá-lo, sem problema algum, você pode simplesmente fazer o <a href="https://gitlab.com/avanti-dvp/iac-com-terraform-e-aws/-/archive/main/iac-com-terraform-e-aws-main.zip">download do repositório</a> e descompactá-lo em sua pasta/diretório de trabalho ou na pasta/diretório de seu usuário</p>
+</blockquote>
+</li>
+<li>
+<p>Vamos abrir o Visual Studio Code no diretório do repositório:</p>
+<pre class="hljs"><code><div>code .
+</div></code></pre>
+</li>
+<li>
+<p>Dentro do Visual Studio Code, crie um arquivo chamado <code>provider.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div>terraform {
+    required_providers {
+        aws = {
+            source  = &quot;hashicorp/aws&quot;
+            version = &quot;~&gt; 5.0&quot;
+        }
+    }
+}
+
+provider &quot;aws&quot; {
+    region = &quot;us-east-1&quot;
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>provider.tf</code> é o arquivo que define o provedor que será usado para criar a infraestrutura na nuvem, nesse caso, a AWS.
+Este arquivo é uma convenção entre os desenvolvedores, ele é opcional, mas é uma boa prática ter ele.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>key_pair.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div># Gera uma chave privada RSA de 4096 bits
+resource &quot;tls_private_key&quot; &quot;rsa_key&quot; {
+    algorithm = &quot;RSA&quot;
+    rsa_bits  = 4096
+}
+
+# Cria o Key Pair na AWS usando a chave pública gerada
+resource &quot;aws_key_pair&quot; &quot;ec2_key_pair&quot; {
+    key_name   = &quot;ec2-instance-key&quot; # Nome do key pair na AWS
+    public_key = tls_private_key.rsa_key.public_key_openssh
+}
+
+# Salva a chave privada em um arquivo local
+resource &quot;local_file&quot; &quot;private_key_pem&quot; {
+    content  = tls_private_key.rsa_key.private_key_pem
+    filename = &quot;${path.module}/ec2-instance-key.pem&quot;
+
+    # Define as permissões do arquivo para que apenas o proprietário possa ler e escrever
+    file_permission = &quot;0600&quot;
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>keypair.tf</code> é o arquivo que define a criação de um par de chaves na AWS.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>security_group.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div># 1. Security Group para liberar a porta 80 (HTTP) para qualquer origem
+resource &quot;aws_security_group&quot; &quot;http_sg&quot; {
+    name        = &quot;allow-http-sg&quot;
+    description = &quot;Allow HTTP inbound traffic&quot;
+
+    ingress {
+        from_port   = 80
+        to_port     = 80
+        protocol    = &quot;tcp&quot;
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+
+    tags = {
+        Name = &quot;allow-http&quot;
+    }
+}
+
+# 2. Security Group para liberar a porta 22 (SSH) para um IP específico
+resource &quot;aws_security_group&quot; &quot;ssh_sg&quot; {
+    name        = &quot;allow-ssh-sg&quot;
+    description = &quot;Allow SSH inbound traffic from a specific IP&quot;
+
+    ingress {
+        from_port   = 22
+        to_port     = 22
+        protocol    = &quot;tcp&quot;
+        cidr_blocks = [var.meu_ip_publico]
+    }
+
+    tags = {
+        Name = &quot;allow-ssh&quot;
+    }
+}
+
+# 3. Security Group para liberar todo o tráfego de saída (Egress)
+resource &quot;aws_security_group&quot; &quot;egress_all_sg&quot; {
+    name        = &quot;allow-all-egress-sg&quot;
+    description = &quot;Allow all outbound traffic&quot;
+
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = &quot;-1&quot; # &quot;-1&quot; representa todos os protocolos
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+
+    tags = {
+        Name = &quot;allow-all-egress&quot;
+    }
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>security_group.tf</code> é o arquivo que define a criação dos security groups na AWS.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>data.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div>data &quot;aws_ami&quot; &quot;amazon_linux&quot; {
+    most_recent = true
+    owners      = [&quot;amazon&quot;]
+
+    filter {
+        name   = &quot;name&quot;
+        values = [&quot;amzn2-ami-hvm-*-x86_64-gp2&quot;]
+    }
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>data.tf</code> é o arquivo que define um datasource responsável por buscar o id da imagem (AMI) mais recente do Amazon Linux 2.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>ec2.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div># Cria a instância EC2
+resource &quot;aws_instance&quot; &quot;web_server&quot; {
+    ami           = data.aws_ami.amazon_linux.id
+    instance_type = &quot;t2.micro&quot;
+    user_data     = base64encode(file(&quot;user_data.sh&quot;))
+
+    # Define o key pair para a instância
+    key_name      = aws_key_pair.ec2_key_pair.key_name
+
+    # Associa os 3 Security Groups à instância
+    vpc_security_group_ids = [
+        aws_security_group.http_sg.id,
+        aws_security_group.ssh_sg.id,
+        aws_security_group.egress_all_sg.id
+    ]
+
+    tags = {
+        Name = &quot;WebServer-SRE&quot;
+    }
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>ec2.tf</code> é o arquivo que define a criação da instância EC2 na AWS.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>outputs.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div># Bloco para exibir o IP público da instância após a criação
+output &quot;instance_public_ip&quot; {
+  description = &quot;IP público da instância EC2&quot;
+  value       = aws_instance.web_server.public_ip
+}
+
+output &quot;website_url&quot; {
+    description = &quot;URL do site provisionado.&quot;
+    value       = &quot;http://${aws_instance.web_server.public_ip}&quot;
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>outputs.tf</code> é o arquivo que define as saídas que serão exibidas após a criação da infraestrutura, nesse caso, o IP público da instância EC2.</p>
+</blockquote>
+</li>
+<li>
+<p>Agora vamos criar o arquivo <code>variables.tf</code>, incluindo esse trecho abaixo nele:</p>
+<pre class="hljs"><code><div>variable &quot;meu_ip_publico&quot; {
+    type        = string
+    description = &quot;Endereço IP público para o Security Group SSH&quot;
+    # IMPORTANTE: Substitua pelo seu endereço IP público
+    # Para saber o seu IP público, acesse https://www.whatismyip.com/
+    default     = &quot;203.0.113.25/32&quot;
+}
+</div></code></pre>
+<blockquote>
+<p>[!TIP]
+O arquivo <code>variables.tf</code> é o arquivo que define as variáveis que serão usadas na infraestrutura, nesse caso, o IP público para o Security Group SSH.</p>
+</blockquote>
+</li>
+<li>
+<p>Boa! terminamos de criar todos os arquivos necessários para a criação da infraestrutura na nuvem.</p>
+</li>
+<li>
+<p>Agora vamos iniciar o fluxo de trabalho do Terraform para criar a infraestrutura na nuvem:</p>
+<pre class="hljs"><code><div>terraform init
+terraform plan
+terraform apply
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+O comando <code>terraform init</code> inicializa o Terraform e baixa os providers necessários para a criação da infraestrutura na nuvem.
+O comando <code>terraform plan</code> cria um plano de execução que mostra as alterações que serão feitas na infraestrutura na nuvem.
+O comando <code>terraform apply</code> aplica as configurações definidas nos arquivos .tf e cria a infraestrutura na nuvem.</p>
+</blockquote>
+</li>
+<li>
+<p>Se tudo rodar com sucesso, você verá o IP público da instância EC2 e a URL do site provisionado, basta acessá-lo através dessa URL no seu navegador para ver o site está no ar.</p>
+</li>
+</ol>
+<blockquote>
+<p>[!WARNING]
+A maioria dos navegadores modernos força o redirecionamento da página para HTTPS
+Como não subimos o site em HTTPS, a conexão não irá acontecer
+Portanto, para ver o site funcionando, você precisa adicionar o http:// no começo da URL antes do IP na barra de endereço do seu navegador</p>
+</blockquote>
+<p>E ele deverá aparecer dessa forma:</p>
+<p><img src="images/site.png" alt="Site no Ar"></p>
+<ol start="13">
+<li>
+<p>Para destruir a infraestrutura na nuvem, execute o comando abaixo:</p>
+<pre class="hljs"><code><div>terraform destroy
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+O comando <code>terraform destroy</code> destrói a infraestrutura na nuvem que foi criada pelo Terraform.
+<strong>RECOMENDADO:</strong> Sempre que você criar uma infraestrutura na nuvem, certifique-se de destruí-la quando não estiver mais usando.</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="saiba-mais">Saiba mais</h2>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform">Documentação do Terraform</a></li>
+</ul>
+
+</body>
+</html>
